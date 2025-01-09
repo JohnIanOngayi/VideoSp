@@ -1,28 +1,23 @@
-using Microsoft.OpenApi.Models;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
-// Add OpenAPI/Swagger services
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-});
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger(opt =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    });
-}
+    opt.RouteTemplate = "openapi/{documentName}.json";
+});
+app.MapScalarApiReference(opt =>
+{
+    opt.Title = "Scalar Example";
+    opt.Theme = ScalarTheme.DeepSpace;
+    opt.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.Http11);
+});
 
 app.UseHttpsRedirection();
 
