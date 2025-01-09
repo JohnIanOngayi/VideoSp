@@ -8,6 +8,7 @@
 
 # ignore sqlite db
 *.db
+Migrations/
 
 # User-specific files
 *.rsuser
