@@ -1,6 +1,6 @@
 @src_HostAddress = http://localhost:5015
 
-GET {{src_HostAddress}}/weatherforecast/
+GET {{src_HostAddress}}/videoGame
 Accept: application/json
 
 ###

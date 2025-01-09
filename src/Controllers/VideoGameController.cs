@@ -81,7 +81,7 @@ public class VideoGameController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult DeleteGame(int id)
+    public IActionResult DeleteVideoGame(int id)
     {
         var existingGame = videoGames.FirstOrDefault(game => game.Id == id);
 
