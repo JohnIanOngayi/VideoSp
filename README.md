@@ -21,7 +21,13 @@ dotnet build
 # to run project
 dotnet run
 
+# initial seed
+dotnet ef migrations add InitialMigration
+dotnet ef database update
+
 ```
+
+Test all API endpoints with a nice [Scalar UI](http://localhost:5015/scalar/v1)
 
 ## Contributing
 
