@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using src.Models;
 
 namespace src.Data;
 
@@ -8,6 +9,8 @@ public class VideoGameDbContext : DbContext
         : base(options) { }
 
     public DbSet<VideoGame> VideoGames => Set<VideoGame>();
+
+    public DbSet<VideoGameDetails> VideoGameDetails => Set<VideoGameDetails>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

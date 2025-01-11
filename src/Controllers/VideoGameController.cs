@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using src.Data;
+using src.Models;
 
 namespace src.Controllers;
 
@@ -13,7 +14,7 @@ public class VideoGameController(VideoGameDbContext context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<VideoGame>>> GetVideoGames()
     {
-        return Ok(await _context.VideoGames.ToListAsync());
+        return Ok(await _context.VideoGames.Include(game => game.VideoGameDetails).ToListAsync());
     }
 
     [HttpGet]

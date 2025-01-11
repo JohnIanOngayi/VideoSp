@@ -1,4 +1,4 @@
-﻿namespace src;
+﻿namespace src.Models;
 
 public class VideoGame
 {
@@ -7,4 +7,7 @@ public class VideoGame
     public string? Platform { get; set; }
     public string? Developer { get; set; }
     public string? Publisher { get; set; }
+
+    // -<
+    public VideoGameDetails? VideoGameDetails { get; set; }
 }
