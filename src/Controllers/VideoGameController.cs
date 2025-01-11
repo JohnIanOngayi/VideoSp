@@ -14,7 +14,13 @@ public class VideoGameController(VideoGameDbContext context) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<VideoGame>>> GetVideoGames()
     {
-        return Ok(await _context.VideoGames.Include(game => game.VideoGameDetails).ToListAsync());
+        return Ok(
+            await _context
+                .VideoGames.Include(game => game.VideoGameDetails)
+                .Include(game => game.Developer)
+                .Include(game => game.Publisher)
+                .ToListAsync()
+        );
     }
 
     [HttpGet]
