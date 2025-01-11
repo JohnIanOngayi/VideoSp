@@ -19,6 +19,7 @@ public class VideoGameController(VideoGameDbContext context) : ControllerBase
                 .VideoGames.Include(game => game.VideoGameDetails)
                 .Include(game => game.Developer)
                 .Include(game => game.Publisher)
+                .Include(game => game.Genres)
                 .ToListAsync()
         );
     }
